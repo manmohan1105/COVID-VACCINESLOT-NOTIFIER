@@ -2,7 +2,7 @@ import requests
 from datetime import datetime,timedelta
 import time
 import json
-print("hello")
+# print("hello")
 age=18
 pincodes=["452010","452011","452009","452006"]
 days=2
