@@ -2,8 +2,24 @@ import requests
 from datetime import datetime,timedelta
 import time
 import json
-# print("hello")
-age=18
+import smtplib
+from email.message import EmailMessage
+def emailalert(subject,body,to):
+   msg=EmailMessage()
+   msg.set_content(body)
+   msg['subject']=subject
+   msg['to']=to
+   
+   user="namanforever1105@gmail.com"
+   password="qkaopaurqmdjgnyf"
+   msg["from"]=user
+   server=smtplib.SMTP("smtp.gmail.com",587)
+   server.starttls()
+   server.login(user,password)
+   server.send_message(msg)
+   server.quit()
+print("hello")
+age=50
 pincodes=["452010","452011","452009","452006"]
 days=2
 print_flag = 'Y'
@@ -33,9 +49,17 @@ while True:
                                     print(center["name"])
                                     print(center["block_name"])
                                     print("price:",center["fee_type"])
-                                    print("Availablity:",session["availble_capacity"])
+                                    print("Availablity:",session["available_capacity"])
+                                    centername=center["name"]
+                                    blockname=center["block_name"]
+                                    fees=center["fee_type"]
+                                    vaccines=session["vaccine"]
+                                    Availablity=session["available_capacity"]
+                                    n1="\n"
                                     if (session["vaccine"]!=""):
+                                        subject=f"pincode:{pincode}{n1} ----Available slots date:{givendate}{n1}--- center name:{centername}{n1} ---center block name:{blockname}{n1}---- price:{fees}{n1}---  vaccine:{vaccines}{n1}----,availablity of slots:{Availablity}"
                                         print("Vaccine type:",session["vaccine"])
+                                        emailalert("covid vaccination slot available",subject,"sharmamanmohan1105@gmail.com")
                                     print("\n")   
                                     counter+=1
                                 else:
