@@ -10,8 +10,8 @@ def emailalert(subject,body,to):
    msg['subject']=subject
    msg['to']=to
    
-   user="namanforever1105@gmail.com"
-   password="qkaopaurqmdjgnyf"
+   user="*******"
+   password=""
    msg["from"]=user
    server=smtplib.SMTP("smtp.gmail.com",587)
    server.starttls()
@@ -59,7 +59,7 @@ while True:
                                     if (session["vaccine"]!=""):
                                         subject=f"pincode:{pincode}{n1} ----Available slots date:{givendate}{n1}--- center name:{centername}{n1} ---center block name:{blockname}{n1}---- price:{fees}{n1}---  vaccine:{vaccines}{n1}----,availablity of slots:{Availablity}"
                                         print("Vaccine type:",session["vaccine"])
-                                        emailalert("covid vaccination slot available",subject,"sharmamanmohan1105@gmail.com")
+                                        emailalert("covid vaccination slot available",subject,"")
                                     print("\n")   
                                     counter+=1
                                 else:
